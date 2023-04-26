@@ -30,7 +30,7 @@ def generate_square_wave(frequency, sample_rate):
 def generate_sawtooth_wave(frequency, sample_rate):
     t = np.linspace(0, 1, sample_rate, False)
     audio = 0.5 * signal.sawtooth(2 * np.pi * frequency * t)
-    return audio.astype(np.float32)
+    return (audio * (2**15 - 1)).astype(np.int16)
 
 
 def triangle_wave(frequency, sample_rate):
